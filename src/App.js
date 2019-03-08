@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.pressOne = this.pressOne.bind(this);
-    this.pressTwo = this.pressTwo.bind(this);
-    this.pressThree = this.pressThree.bind(this);
-    this.pressFour = this.pressFour.bind(this);
-    
-  }
+
   state = {
     totalCount: 0,
     correctCount: 0,    
   }
 
-  pressOne() {
+  pressOne = () => {
     if (this.state.totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
       this.setState({totalCount: this.state.totalCount + 1});
@@ -25,7 +18,7 @@ class App extends Component {
     }
   }
 
-  pressTwo() {
+  pressTwo = () => {
     if (this.state.totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
       this.setState({totalCount: this.state.totalCount + 1});
@@ -35,7 +28,7 @@ class App extends Component {
     }
   }
 
-  pressThree() {
+  pressThree = () => {
     if (this.state.totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
       this.setState({totalCount: this.state.totalCount + 1});
@@ -45,7 +38,7 @@ class App extends Component {
     }
   }
 
-  pressFour() {
+  pressFour = () => {
     if (this.state.totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
       this.setState({totalCount: this.state.totalCount + 1});
@@ -55,7 +48,7 @@ class App extends Component {
     }
   }
 
-  clearState() {
+  clearState = () => {
     this.setState({
       totalCount: 0,
       correctCount: 0
@@ -64,47 +57,9 @@ class App extends Component {
   
   render() {
     const {totalCount, correctCount} = this.state;
-    const {pressOne, pressTwo, pressThree, pressFour} = this;
-    // let condition = Math.floor(Math.random() * 4); 
-    // let color1;
-    // let color2;
-    // let color3;
-    // let color4;
-
-    // switch(condition) {
-    //   case 0:
-    //     color1 = "green";
-    //     color2 = "yellow";
-    //     color3 = "yellow";
-    //     color4 = "yellow";
-    //     break;
-    //   case 1:
-    //     color1 = "yellow";
-    //     color2 = "blue";
-    //     color3 = "yellow";
-    //     color4 = "yellow";
-    //     break;
-    //   case 2:
-    //     color1 = "yellow";
-    //     color2 = "yellow";
-    //     color3 = "red";
-    //     color4 = "yellow";
-    //     break;
-    //   case 3:
-    //     color1 = "yellow";
-    //     color2 = "yellow";
-    //     color3 = "yellow";
-    //     color4 = "green";
-    //     break;
-    //   default:
-    //     break;
-    // }
-
-    // console.log(condition);
+    const {pressOne, pressTwo, pressThree, pressFour, clearState} = this;
  
-    return (
-
-      
+    return (      
       <div className="App">
 
         <div>
@@ -115,23 +70,17 @@ class App extends Component {
 
         <div className="grid-container">
 
-          <div className="grid-item one" onClick={pressOne}>
-          1
-          </div>
+          <button className="grid-item one" onClick={pressOne} />         
 
-          <div className="grid-item two" onClick={pressTwo}>
-          2
-          </div>
+          <button className="grid-item two" onClick={pressTwo} />
 
-          <div className="grid-item three" onClick={pressThree}>
-          3
-          </div>
-
-          <div className="grid-item four" onClick={pressFour}>
-          4
-          </div>
+          <button className="grid-item three" onClick={pressThree} />
+          
+          <button className="grid-item four" onClick={pressFour} />          
         
         </div>
+
+        <button onClick={clearState}>Reset</button>
       
       </div>
     );
