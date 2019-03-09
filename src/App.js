@@ -1,90 +1,90 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Boxes from './Boxes';
 
-class App extends Component {
+function App() {
+  const [totalCount, setTotalCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [correctGuess, setCorectGuess] = useState(false);
 
-  state = {
-    totalCount: 0,
-    correctCount: 0,    
-  }
-
-  pressOne = () => {
-    if (this.state.totalCount < 24) {
+  function pressOne() {
+    if (totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
-      this.setState({totalCount: this.state.totalCount + 1});
+      setTotalCount(totalCount + 1);
       if (correctNumber === 0) {
-        this.setState({correctCount: this.state.correctCount + 1})
+        setCorrectCount(correctCount + 1)
       }
     }
   }
 
-  pressTwo = () => {
-    if (this.state.totalCount < 24) {
+  function pressTwo() {
+    if (totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
-      this.setState({totalCount: this.state.totalCount + 1});
+      setTotalCount(totalCount + 1);
       if (correctNumber === 1) {
-        this.setState({correctCount: this.state.correctCount + 1})
+        setCorrectCount(correctCount + 1)
       }
     }
   }
 
-  pressThree = () => {
-    if (this.state.totalCount < 24) {
+  function pressThree() {
+    if (totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
-      this.setState({totalCount: this.state.totalCount + 1});
+      setTotalCount(totalCount + 1);
       if (correctNumber === 2) {
-        this.setState({correctCount: this.state.correctCount + 1})
+        setCorrectCount(correctCount + 1)
       }
     }
   }
 
-  pressFour = () => {
-    if (this.state.totalCount < 24) {
+  function pressFour() {
+    if (totalCount < 24) {
       let correctNumber = Math.floor(Math.random() * 4);
-      this.setState({totalCount: this.state.totalCount + 1});
+      setTotalCount(totalCount + 1);
       if (correctNumber === 3) {
-        this.setState({correctCount: this.state.correctCount + 1})
+        setCorrectCount(correctCount + 1)
       }
     }
-  }
-
-  clearState = () => {
-    this.setState({
-      totalCount: 0,
-      correctCount: 0
-    })
   }
   
-  render() {
-    const {totalCount, correctCount} = this.state;
-    const {pressOne, pressTwo, pressThree, pressFour, clearState} = this;
- 
-    return (      
+  function clearState() {
+    setTotalCount(0);
+    setCorrectCount(0);
+  }
+  
+  return (      
       <div className="App">
 
-        <div>
-          <h3>Total Count: {totalCount}</h3>
-          <h3>Correct Count: {correctCount}</h3>
-        
-        </div>
-
-        <div className="grid-container">
-
-          <button className="grid-item one" onClick={pressOne} />         
-
-          <button className="grid-item two" onClick={pressTwo} />
-
-          <button className="grid-item three" onClick={pressThree} />
+        <div className="header">
+          <p>Tap the correct square to see a picture</p>
           
-          <button className="grid-item four" onClick={pressFour} />          
+          <span>Correct Count: {correctCount}</span>
         
         </div>
+        <div className="body">
+          {
+            correctGuess ? <Boxes pressOne={pressOne} pressTwo={pressTwo} pressThree={pressThree} pressFour={pressFour} /> : <Boxes pressOne={pressOne} pressTwo={pressTwo} pressThree={pressThree} pressFour={pressFour} />
+          }
+          
+          {/*<div className="grid-container body">
 
-        <button onClick={clearState}>Reset</button>
+            <div className="grid-item one" onClick={pressOne} />         
+
+            <div className="grid-item two" onClick={pressTwo} />
+
+            <div className="grid-item three" onClick={pressThree} />
+            
+            <div className="grid-item four" onClick={pressFour} />          
+          
+        </div>*/}
+          <div className="result">{totalCount} trials</div>
+          <button className="reset" onClick={clearState}>Reset</button>        
+        </div>
+        
       
       </div>
     );
-  }
+
 }
 
 export default App;

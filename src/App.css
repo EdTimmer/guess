@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: rgb(37, 40, 82);
+  height: 100vh;
 }
 
 .grid-container {
@@ -11,12 +13,13 @@
 
 .grid-item {
   /* background-color: blue; */
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   /* line-height: 100px; */
   text-align: center;
   margin: 20px;
   border: 2px solid black;
+  border-radius: 10px;
 }
 
 .one {
@@ -38,4 +41,43 @@
   grid-column: 2/3;
   grid-row: 2/3;
   background-color: blue;
+}
+
+.header {
+  background-color: rgb(18, 6, 46);
+  margin: 0;
+  font-size: 2em;
+  color: white;
+}
+
+.body {
+  /* background-color: rgb(34, 39, 107); */
+  margin: 0;
+  font-size: 2em;
+  color: white;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* justify-self: center; */
+  /* align-self: center; */
+}
+
+.result {
+  /* text-align: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: center; */
+  border: 0 solid rgb(18, 6, 46);
+  border-radius: 25px;
+  background-color: rgb(18, 6, 46);
+  width: 160px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.reset {
+  color: black;
+  /* border: 2px solid black; */
+  background-color: whitesmoke;
+  font-size: 20px;
+  margin: 30px;
 }
