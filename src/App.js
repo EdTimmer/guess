@@ -8,68 +8,46 @@ function App() {
   const [correctCount, setCorrectCount] = useState(0);
   const [correctGuess, setCorectGuess] = useState(false);
   const [message, setMessage] = useState("");
-
-  const showPicture = m => new Promise(r => setTimeout(r, m));
+  const [correctNumber, setCorrectNumber] = useState();
 
   function messageFn() {
-    let category = 0;
-    if (correctCount < 2) {
-      category = 0;
+    if (correctCount > 1 && correctCount <= 3) {
+      setMessage("good");
     }
-    else if (correctCount >= 2 && correctCount < 4) {
-      category = 1;
+    if (correctCount > 3 && correctCount <= 5) {
+      setMessage("better");
     }
-    else if (correctCount >= 4 && correctCount < 6) {
-      category = 2;
+    if (correctCount > 5 && correctCount <= 7) {
+      setMessage("great");
     }
-    else if (correctCount >= 6 && correctCount < 8) {
-      category = 3;
+    if (correctCount > 7 && correctCount <= 9) {
+      setMessage("awesome!");
     }
-    else if (correctCount >= 8 && correctCount < 10) {
-      category = 4;
+    if (correctCount > 9 && correctCount < 25) {
+      setMessage("call us");
     }
-    else if (correctCount >= 10 && correctCount < 25) {
-      category = 5;
-    }
-    switch (category) {
-      case 0:
-        setMessage("");
-        break;
-      case 1:
-        setMessage("good");
-        break;
-      case 2:
-        setMessage("better");
-        break;
-      case 3:
-        setMessage("great");
-        break;
-      case 4:
-        setMessage("awesome!");
-        break;
-      case 5:
-        setMessage("call us");
-        break;
-      default:
-        break;
-    }
+    // console.log("correctCount in messageFn: ", correctCount);
   }
-
 
   function press(num) {
 
     if (totalCount < 24) {
+      const timer = m => new Promise(r => setTimeout(r, m));
       let correctNumber = Math.floor(Math.random() * 4);
+      setCorrectNumber(correctNumber);
       setTotalCount(totalCount + 1);
       if (correctNumber === num) {
-        setCorrectCount(correctCount + 1);
-        messageFn();
+        // setCorrectCount(correctCount + 1);        
         (async () => {
           setCorectGuess(true);
-          await showPicture(1000)
-            .then(() => setCorectGuess(false));
+          await timer(1000)
+            .then(() => setCorectGuess(false))
+            // .then(() => console.log("correctCount in async is: ", correctCount));
+            // await messageFn();
+            .then(() => setCorrectCount(correctCount + 1))
+            .then(() => messageFn());
         })();
-
+        // messageFn();
       }
     }
   }
@@ -87,19 +65,19 @@ function App() {
       <div className="header">
         <p>Tap the correct square to see a picture</p>
 
-        <p>{message}</p>
+        <span>{message}</span>
+        <br/>
 
-        <span>Correct Count: {correctCount}</span>
+        <span>Correct: {correctCount}</span>
 
       </div>
       <div className="body">
         {
-          correctGuess ? <img src={pyramids} style={{ height: '600px', width: '600px' }} alt="reward" /> : <Boxes press={press} />
+          correctGuess ? <img src={pyramids} style={{ height: '500px', width: '500px' }} alt="reward" /> : <Boxes press={press} correctNumber={correctNumber} />
         }
         <div className="result">{totalCount} trials</div>
         <button className="reset" onClick={clearState}>Reset</button>
       </div>
-
 
     </div>
   );

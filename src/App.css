@@ -18,8 +18,8 @@
   /* line-height: 100px; */
   text-align: center;
   margin: 20px;
-  border: 2px solid black;
-  border-radius: 10px;
+  /* border: 2px solid black; */
+  border-radius: 15px;
 }
 
 .one {
@@ -81,3 +81,66 @@
   font-size: 20px;
   margin: 30px;
 }
+
+.correct-box-0-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-1-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-2-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-3-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-0-off {
+  background-color: green;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-1-off {
+  background-color: yellow;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-2-off {
+  background-color: red;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-3-off {
+  background-color: blue;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.5;}
+}
+.blink{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-timing-function:ease-in-out;
+	/* -webkit-animation-direction: alternate; */
+}
+
+
